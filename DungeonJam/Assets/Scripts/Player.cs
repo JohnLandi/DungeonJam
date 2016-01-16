@@ -43,7 +43,7 @@ public class Player : MonoBehaviour {
 	{
 		Player1Controls();
 
-		Player2Controls();
+		//Player2Controls();
 	}
 
 	#region player collisions
@@ -81,27 +81,27 @@ public class Player : MonoBehaviour {
 			gameController.player1AmmoUp();
 		}
 
-		if(other.gameObject.tag == ("Ammo") && gameObject.tag == ("Player2"))
+		/*if(other.gameObject.tag == ("Ammo") && gameObject.tag == ("Player2"))
 		{
 			gameController.player2AmmoUp();
-		}
+		}*/
 
 		if(other.gameObject.tag == ("Coin") && gameObject.tag == ("Player1"))
 		{
 			gameController.player1ScoreUp();
 		}
 
-		if(other.gameObject.tag == ("Coin") && gameObject.tag == ("Player2"))
+		/*if(other.gameObject.tag == ("Coin") && gameObject.tag == ("Player2"))
 		{
 			gameController.player2ScoreUp();
-		}
+		}*/
 		
-		if(other.gameObject.tag == ("Flag") && gameObject.tag == ("Player2"))
+		/*if(other.gameObject.tag == ("Flag") && gameObject.tag == ("Player2"))
 		{
 			gameController.ShowFlagImage2();
 			gameController.player2HasFlag = true;
 			gameController.flagGone();
-		}
+		}*/
 
 		if(other.gameObject.tag == ("Flag") && gameObject.tag == ("Player1"))
 		{
@@ -115,12 +115,12 @@ public class Player : MonoBehaviour {
 			gameController.player1HP = 0;
 		}
 
-		if(other.gameObject.tag == ("Hazzard") && gameObject.tag == ("Player2"))
+		/*if(other.gameObject.tag == ("Hazzard") && gameObject.tag == ("Player2"))
 		{
 			gameController.player2HP = 0;
-		}
+		}*/
 
-		if(other.gameObject.tag == ("Player2Cap") && gameObject.tag == ("Player1") && gameController.player1HasFlag == true)
+		/*if(other.gameObject.tag == ("Player2Cap") && gameObject.tag == ("Player1") && gameController.player1HasFlag == true)
 		{
 			gameController.player1Score += 25;
 			gameController.player1HasFlag = false;
@@ -134,7 +134,7 @@ public class Player : MonoBehaviour {
 			gameController.player2HasFlag = false;
 			gameController.HideFlagImage2();
 			gameController.flagReturn();
-		}
+		}*/
 	}
 
 	#endregion
@@ -221,7 +221,7 @@ public class Player : MonoBehaviour {
 			gameController.player1Respawn();
 		}
 	}
-
+	/*
 	public void Player2Controls()
 	{
 		if(grounded && gameObject.tag == ("Player2"))
@@ -273,7 +273,7 @@ public class Player : MonoBehaviour {
 			gameController.player2Respawn();
 		}
 	}
-
+*/
 	#endregion
 
 }

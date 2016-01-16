@@ -1,0 +1,23 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2008
+
+Project("{00ADACAD-07E7-CE7E-7270-08F9F83BADD8}") = "DungeonJam", "Assembly-CSharp.csproj", "{5028608F-0603-5B3C-3483-346D978C6348}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5028608F-0603-5B3C-3483-346D978C6348}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5028608F-0603-5B3C-3483-346D978C6348}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5028608F-0603-5B3C-3483-346D978C6348}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5028608F-0603-5B3C-3483-346D978C6348}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
+	EndGlobalSection
+EndGlobal
