@@ -13,7 +13,7 @@ public class Player : MonoBehaviour {
 	public Transform groundCheck;
 	public float groundCheckRadius;
 	public LayerMask whatIsGround;
-	private bool grounded;
+	private bool grounded = true;
 
 
 	private int doubleJumped;

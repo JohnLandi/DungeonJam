@@ -1,27 +1,28 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour {
 
 	public void toMainMenu()
 	{
 		Debug.Log("to main menu");
-		Application.LoadLevel(0);
+		SceneManager.LoadScene(0);
 	}
 
 	public void toGameScene()
 	{
-		Application.LoadLevel(1);
+		SceneManager.LoadScene(1);
 	}
 
 	public void toIntstructions()
 	{
-		Application.LoadLevel(4);
+		SceneManager.LoadScene(4);
 	}
 
 	public void toCredits()
 	{
-		Application.LoadLevel(5);
+		SceneManager.LoadScene(5);
 	}
 
 	public void replay()
