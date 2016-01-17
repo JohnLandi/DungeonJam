@@ -45,16 +45,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\BackgroundScroll.cs" />
-     <Compile Include="Assets\Scripts\Bullet.cs" />
-     <Compile Include="Assets\Scripts\Collection.cs" />
-     <Compile Include="Assets\Scripts\Flag.cs" />
      <Compile Include="Assets\Scripts\GameController.cs" />
      <Compile Include="Assets\Scripts\LevelManager.cs" />
-     <Compile Include="Assets\Scripts\MovingPlatform.cs" />
-     <Compile Include="Assets\Scripts\PatrollingEnemy.cs" />
+     <Compile Include="Assets\Scripts\Old\BackgroundScroll.cs" />
+     <Compile Include="Assets\Scripts\Old\Bullet.cs" />
+     <Compile Include="Assets\Scripts\Old\Collection.cs" />
+     <Compile Include="Assets\Scripts\Old\Flag.cs" />
+     <Compile Include="Assets\Scripts\Old\MovingPlatform.cs" />
+     <Compile Include="Assets\Scripts\Old\PatrollingEnemy.cs" />
+     <Compile Include="Assets\Scripts\Old\PlayerData.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
-     <Compile Include="Assets\Scripts\PlayerData.cs" />
      <None Include="Assets\Animations\Placeholder.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>

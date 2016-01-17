@@ -16,7 +16,7 @@ public class Player : MonoBehaviour {
 	private bool grounded;
 
 
-	private int doubleJumped1;
+	private int doubleJumped;
 	//private int doubleJumped2;
 	#endregion
 
@@ -25,6 +25,8 @@ public class Player : MonoBehaviour {
 
 	public GameObject bulletRight;
 	public GameObject bulletLeft;
+
+	private Animator anim;
 
 
 	//usually where you want to do physics stuff in unity
@@ -35,13 +37,17 @@ public class Player : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+		anim = GetComponent<Animator>();
 	}
-	
+
 	// Update is called once per frame
 	void Update () 
 	{
-		Player1Controls();
+		PlayerControls();
+
+		anim.SetBool("Grounded", grounded);
+
+		anim.SetInteger("Double", doubleJumped);
 
 		//Player2Controls();
 	}
@@ -68,34 +74,34 @@ public class Player : MonoBehaviour {
 	{
 		if((other.gameObject.tag == ("LeftBullet") || other.gameObject.tag == ("RightBullet")) && gameObject.tag == ("Player1"))
 		{
-			gameController.player1HPDown();
+			gameController.playerHPDown();
 		}
 
 		if((other.gameObject.tag == ("LeftBullet") || other.gameObject.tag == ("RightBullet")) && gameObject.tag == ("Player2"))
 		{
-			gameController.player2HPDown();
+			gameController.playerHPDown();
 		}
 
-		if(other.gameObject.tag == ("Ammo") && gameObject.tag == ("Player1"))
+		/*if(other.gameObject.tag == ("Ammo") && gameObject.tag == ("Player"))
 		{
-			gameController.player1AmmoUp();
-		}
+			gameController.playerAmmoUp();
+		}*/
 
 		/*if(other.gameObject.tag == ("Ammo") && gameObject.tag == ("Player2"))
 		{
 			gameController.player2AmmoUp();
 		}*/
 
-		if(other.gameObject.tag == ("Coin") && gameObject.tag == ("Player1"))
+		if(other.gameObject.tag == ("Coin") && gameObject.tag == ("Player"))
 		{
-			gameController.player1ScoreUp();
+			gameController.playerScoreUp();
 		}
 
 		/*if(other.gameObject.tag == ("Coin") && gameObject.tag == ("Player2"))
 		{
 			gameController.player2ScoreUp();
 		}*/
-		
+
 		/*if(other.gameObject.tag == ("Flag") && gameObject.tag == ("Player2"))
 		{
 			gameController.ShowFlagImage2();
@@ -103,16 +109,16 @@ public class Player : MonoBehaviour {
 			gameController.flagGone();
 		}*/
 
-		if(other.gameObject.tag == ("Flag") && gameObject.tag == ("Player1"))
+		/*if(other.gameObject.tag == ("Flag") && gameObject.tag == ("Player1"))
 		{
 			gameController.ShowFlagImage1();
-			gameController.player1HasFlag = true;
+			gameController.playerHasFlag = true;
 			gameController.flagGone();
-		}
+		}*/
 
 		if(other.gameObject.tag == ("Hazzard") && gameObject.tag == ("Player1"))
 		{
-			gameController.player1HP = 0;
+			gameController.playerHP = 0;
 		}
 
 		/*if(other.gameObject.tag == ("Hazzard") && gameObject.tag == ("Player2"))
@@ -168,112 +174,63 @@ public class Player : MonoBehaviour {
 
 	#endregion
 
-	#region player 1&2 controls
+	#region player controls
 
-	public void Player1Controls()
+	public void PlayerControls()
 	{
-		if(grounded && gameObject.tag == ("Player1"))
+		if(grounded && gameObject.tag == ("Player"))
 		{
-			doubleJumped1 = 4;
+			doubleJumped = 1;
 		}
-		
-		if(Input.GetKeyDown(KeyCode.K) && grounded && gameObject.tag == ("Player1"))
+
+		if(Input.GetKeyDown(KeyCode.K) && grounded && gameObject.tag == ("Player"))
 		{
 			//to make the character jump
 			//Vector2 holds an x and a y value
 			jump();
 		}
-		
-		if(Input.GetKeyDown(KeyCode.K) && doubleJumped1 > 0 && !grounded && gameObject.tag == ("Player1"))
+
+		if(Input.GetKeyDown(KeyCode.K) && doubleJumped > 0 && !grounded && gameObject.tag == ("Player"))
 		{
 			jump();
-			doubleJumped1 -= 1;
+			doubleJumped -= 1;
 		}
-		
-		if(Input.GetKey(KeyCode.D )&& gameObject.tag == ("Player1"))
+
+		if(Input.GetKey(KeyCode.D )&& gameObject.tag == ("Player"))
 		{
 			//to make the character move
 			//Vector2 holds an x and a y value
 			moveRight();
 		}
-		
-		if(Input.GetKey(KeyCode.A) && gameObject.tag == ("Player1"))
+
+		if(Input.GetKey(KeyCode.A) && gameObject.tag == ("Player"))
 		{
 			//to make the character move
 			//Vector2 holds an x and a y value
 			moveLeft();
 		}
 
-		if(Input.GetKeyDown(KeyCode.J) && gameObject.tag == ("Player1") && gameController.player1Ammo > 0)
+		if(Input.GetKeyDown(KeyCode.J) && gameObject.tag == ("Player") && gameController.playerAmmo > 0)
 		{
 			shootLeft();
 			gameController.player1AmmoDown();
 		}
 
-		if(Input.GetKeyDown(KeyCode.L) && gameObject.tag == ("Player1") && gameController.player1Ammo > 0)
+		if(Input.GetKeyDown(KeyCode.L) && gameObject.tag == ("Player") && gameController.playerAmmo > 0)
 		{
 			shootRight();
 			gameController.player1AmmoDown();
 		}
+			
+		anim.SetFloat("Speed", Mathf.Abs(GetComponent<Rigidbody2D>().velocity.x));
+		anim.SetFloat("Falling", GetComponent<Rigidbody2D>().velocity.y);
 
-		if(Input.GetKeyDown(KeyCode.I) && gameObject.tag == ("Player1"))
-		{
-			gameController.player1Respawn();
-		}
+		if(GetComponent<Rigidbody2D>().velocity.x > 0)
+			transform.localScale = new Vector3(-1f, 1f, 1f);
+		else if(GetComponent<Rigidbody2D>().velocity.x < 0)
+			transform.localScale = new Vector3(1f, 1f, 1f);
 	}
-	/*
-	public void Player2Controls()
-	{
-		if(grounded && gameObject.tag == ("Player2"))
-		{
-			doubleJumped1 = 4;
-		}
-		
-		if((Input.GetKeyDown(KeyCode.Keypad2)) && grounded && gameObject.tag == ("Player2"))
-		{
-			//to make the character jump
-			//Vector2 holds an x and a y value
-			jump();
-		}
-		
-		if((Input.GetKeyDown(KeyCode.Keypad2)) && doubleJumped1 > 0 && !grounded && gameObject.tag == ("Player2"))
-		{
-			jump();
-			doubleJumped1 -= 1;
-		}
-		
-		if(Input.GetKey(KeyCode.RightArrow) && gameObject.tag == ("Player2"))
-		{
-			//to make the character move
-			//Vector2 holds an x and a y value
-			moveRight();
-		}
-		
-		if(Input.GetKey(KeyCode.LeftArrow) && gameObject.tag == ("Player2"))
-		{
-			//to make the character move
-			//Vector2 holds an x and a y value
-			moveLeft();
-		}
 
-		if(Input.GetKeyDown(KeyCode.Keypad1) && gameObject.tag == ("Player2") && gameController.player2Ammo > 0)
-		{
-			shootLeft();
-			gameController.player2AmmoDown();
-		}
-
-		if(Input.GetKeyDown(KeyCode.Keypad3) && gameObject.tag == ("Player2") && gameController.player2Ammo > 0)
-		{
-			shootRight();
-			gameController.player2AmmoDown();
-		}
-
-		if(Input.GetKeyDown(KeyCode.Keypad5) && gameObject.tag == ("Player2"))
-		{
-			gameController.player2Respawn();
-		}
-	}
-*/
 	#endregion
 
 }
