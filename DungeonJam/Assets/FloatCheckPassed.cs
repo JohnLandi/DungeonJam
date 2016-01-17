@@ -20,7 +20,7 @@ public class FloatCheckPassed : MonoBehaviour
 	{
 		if(other.gameObject.tag == ("Ground"))
 		{
-			Debug.Log("Shouldn't work?");
+			//Debug.Log("Shouldn't work?");
 			GameObject.FindGameObjectWithTag("FeetBox").GetComponent<CircleCollider2D>().enabled = true;
 		}
 	}

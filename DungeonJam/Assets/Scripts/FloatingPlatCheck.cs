@@ -20,7 +20,7 @@ public class FloatingPlatCheck : MonoBehaviour
 	{
 		if(other.gameObject.tag == ("Ground"))
 		{
-			Debug.Log("Should work?");
+			//Debug.Log("Should work?");
 			GameObject.FindGameObjectWithTag("FeetBox").GetComponent<CircleCollider2D>().enabled = false;
 		}
 	}
