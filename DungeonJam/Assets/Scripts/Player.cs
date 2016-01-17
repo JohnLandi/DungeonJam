@@ -7,6 +7,7 @@ public class Player : MonoBehaviour {
 
 	public float moveSpeed;
 	public float jumpHeight;
+	private float moveVelocity;
 
 	#region grounded variables
 	//transform is a point in space
@@ -49,7 +50,6 @@ public class Player : MonoBehaviour {
 
 		anim.SetInteger("Double", doubleJumped);
 
-		//Player2Controls();
 	}
 
 	#region player collisions
@@ -82,65 +82,21 @@ public class Player : MonoBehaviour {
 			gameController.playerHPDown();
 		}
 
-		/*if(other.gameObject.tag == ("Ammo") && gameObject.tag == ("Player"))
-		{
-			gameController.playerAmmoUp();
-		}*/
 
-		/*if(other.gameObject.tag == ("Ammo") && gameObject.tag == ("Player2"))
-		{
-			gameController.player2AmmoUp();
-		}*/
 
 		if(other.gameObject.tag == ("Coin") && gameObject.tag == ("Player"))
 		{
 			gameController.playerScoreUp();
 		}
 
-		/*if(other.gameObject.tag == ("Coin") && gameObject.tag == ("Player2"))
-		{
-			gameController.player2ScoreUp();
-		}*/
 
-		/*if(other.gameObject.tag == ("Flag") && gameObject.tag == ("Player2"))
-		{
-			gameController.ShowFlagImage2();
-			gameController.player2HasFlag = true;
-			gameController.flagGone();
-		}*/
-
-		/*if(other.gameObject.tag == ("Flag") && gameObject.tag == ("Player1"))
-		{
-			gameController.ShowFlagImage1();
-			gameController.playerHasFlag = true;
-			gameController.flagGone();
-		}*/
 
 		if(other.gameObject.tag == ("Hazzard") && gameObject.tag == ("Player1"))
 		{
 			gameController.playerHP = 0;
 		}
 
-		/*if(other.gameObject.tag == ("Hazzard") && gameObject.tag == ("Player2"))
-		{
-			gameController.player2HP = 0;
-		}*/
 
-		/*if(other.gameObject.tag == ("Player2Cap") && gameObject.tag == ("Player1") && gameController.player1HasFlag == true)
-		{
-			gameController.player1Score += 25;
-			gameController.player1HasFlag = false;
-			gameController.HideFlagImage1();
-			gameController.flagReturn();
-		}
-
-		if(other.gameObject.tag == ("Player1Cap") && gameObject.tag == ("Player2") && gameController.player2HasFlag == true)
-		{
-			gameController.player2Score += 25;
-			gameController.player2HasFlag = false;
-			gameController.HideFlagImage2();
-			gameController.flagReturn();
-		}*/
 	}
 
 	#endregion
@@ -150,16 +106,6 @@ public class Player : MonoBehaviour {
 	public void jump()
 	{
 		GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x , jumpHeight);
-	}
-
-	public void moveLeft()
-	{
-		GetComponent<Rigidbody2D>().velocity = new Vector2(-moveSpeed , GetComponent<Rigidbody2D>().velocity.y);
-	}
-
-	public void moveRight()
-	{
-		GetComponent<Rigidbody2D>().velocity = new Vector2(moveSpeed , GetComponent<Rigidbody2D>().velocity.y);
 	}
 
 	public void shootRight()
@@ -183,32 +129,25 @@ public class Player : MonoBehaviour {
 			doubleJumped = 1;
 		}
 
-		if(Input.GetKeyDown(KeyCode.K) && grounded && gameObject.tag == ("Player"))
+		//moveVelocity = 0f;
+
+		moveVelocity = moveSpeed * Input.GetAxisRaw("Horizontal");
+
+		GetComponent<Rigidbody2D>().velocity = new Vector2(moveVelocity, GetComponent<Rigidbody2D>().velocity.y);
+
+		if(Input.GetButtonDown("Jump") && grounded && gameObject.tag == ("Player"))
 		{
 			//to make the character jump
 			//Vector2 holds an x and a y value
 			jump();
 		}
 
-		if(Input.GetKeyDown(KeyCode.K) && doubleJumped > 0 && !grounded && gameObject.tag == ("Player"))
+		if(Input.GetButtonDown("Jump") && doubleJumped > 0 && !grounded && gameObject.tag == ("Player"))
 		{
 			jump();
 			doubleJumped -= 1;
 		}
-
-		if(Input.GetKey(KeyCode.D )&& gameObject.tag == ("Player"))
-		{
-			//to make the character move
-			//Vector2 holds an x and a y value
-			moveRight();
-		}
-
-		if(Input.GetKey(KeyCode.A) && gameObject.tag == ("Player"))
-		{
-			//to make the character move
-			//Vector2 holds an x and a y value
-			moveLeft();
-		}
+			
 
 		if(Input.GetKeyDown(KeyCode.J) && gameObject.tag == ("Player") && gameController.playerAmmo > 0)
 		{
@@ -221,6 +160,8 @@ public class Player : MonoBehaviour {
 			shootRight();
 			gameController.player1AmmoDown();
 		}
+
+
 			
 		anim.SetFloat("Speed", Mathf.Abs(GetComponent<Rigidbody2D>().velocity.x));
 		anim.SetFloat("Falling", GetComponent<Rigidbody2D>().velocity.y);
