@@ -128,11 +128,9 @@ public class Player : MonoBehaviour {
 		{
 			doubleJumped = 1;
 		}
-
-		//moveVelocity = 0f;
-
+			
+		//the next two lines of code are the ones that control the players movement left and right
 		moveVelocity = moveSpeed * Input.GetAxisRaw("Horizontal");
-
 		GetComponent<Rigidbody2D>().velocity = new Vector2(moveVelocity, GetComponent<Rigidbody2D>().velocity.y);
 
 		if(Input.GetButtonDown("Jump") && grounded && gameObject.tag == ("Player"))
@@ -147,15 +145,8 @@ public class Player : MonoBehaviour {
 			jump();
 			doubleJumped -= 1;
 		}
-			
 
-		if(Input.GetKeyDown(KeyCode.J) && gameObject.tag == ("Player") && gameController.playerAmmo > 0)
-		{
-			shootLeft();
-			gameController.player1AmmoDown();
-		}
-
-		if(Input.GetKeyDown(KeyCode.L) && gameObject.tag == ("Player") && gameController.playerAmmo > 0)
+		if(Input.GetButtonDown("Fire1"))
 		{
 			shootRight();
 			gameController.player1AmmoDown();
@@ -164,7 +155,7 @@ public class Player : MonoBehaviour {
 
 			
 		anim.SetFloat("Speed", Mathf.Abs(GetComponent<Rigidbody2D>().velocity.x));
-		anim.SetFloat("Falling", GetComponent<Rigidbody2D>().velocity.y);
+		//anim.SetFloat("Falling", GetComponent<Rigidbody2D>().velocity.y);
 
 		if(GetComponent<Rigidbody2D>().velocity.x > 0)
 			transform.localScale = new Vector3(-1f, 1f, 1f);
