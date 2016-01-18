@@ -1,0 +1,151 @@
+fileFormatVersion: 2
+guid: 045561ce460d6ce41877600668c62c77
+timeCreated: 1453093728
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: TorchDudeWalk_0
+    21300002: TorchDudeWalk_1
+    21300004: TorchDudeWalk_2
+    21300006: TorchDudeWalk_3
+    21300008: TorchDudeWalk_5
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: TorchDudeWalk_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 55
+        height: 64
+      alignment: 9
+      pivot: {x: 0.60156554, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -23.086105, y: 32}
+        - {x: -33.086105, y: 22}
+        - {x: -33.086105, y: -29}
+        - {x: -29.086105, y: -32}
+        - {x: 18.913895, y: -32}
+        - {x: 21.913895, y: -31}
+        - {x: 21.913895, y: 31}
+        - {x: 19.913895, y: 32}
+    - name: TorchDudeWalk_1
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 0
+        width: 45
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 19.5, y: 26}
+        - {x: 2.5, y: 32}
+        - {x: -19.5, y: 32}
+        - {x: -21.5, y: 21}
+        - {x: -21.5, y: -27}
+        - {x: -20.5, y: -32}
+        - {x: -0.5, y: -32}
+        - {x: 22.5, y: 3}
+        - {x: 22.5, y: 17}
+    - name: TorchDudeWalk_2
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 0
+        width: 55
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5243758, y: 0.4930174}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -9.840668, y: 32.446884}
+        - {x: -28.840668, y: 6.446886}
+        - {x: -28.840668, y: 3.446886}
+        - {x: -23.840668, y: -1.5531139}
+        - {x: -19.840668, y: -1.5531139}
+        - {x: -16.840668, y: 1.4468861}
+        - {x: -16.840668, y: 2.446886}
+        - {x: -12.840668, y: 5.446886}
+        - {x: -16.840668, y: 1.4468861}
+        - {x: -16.840668, y: -0.55311394}
+        - {x: -28.840668, y: -17.553114}
+        - {x: -28.840668, y: -31.553114}
+        - {x: 16.159332, y: -31.553114}
+        - {x: 26.159332, y: 7.446886}
+        - {x: 26.159332, y: 24.446886}
+        - {x: 18.159332, y: 32.446884}
+    - name: TorchDudeWalk_3
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 0
+        width: 40
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5167583, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 7.329666, y: -1}
+        - {x: 14.329666, y: -4}
+        - {x: 19.329666, y: -1}
+        - {x: 19.329666, y: 8}
+        - {x: 16.329666, y: 20}
+        - {x: 5.329666, y: 32}
+        - {x: -20.670334, y: 32}
+        - {x: -20.670334, y: -32}
+        - {x: -2.6703339, y: -32}
+        - {x: 10.329666, y: -14}
+        - {x: 6.329666, y: -2}
+        - {x: 3.3296661, y: 2}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

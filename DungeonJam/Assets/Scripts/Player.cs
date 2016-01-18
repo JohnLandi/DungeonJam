@@ -4,6 +4,7 @@ using System.Collections;
 public class Player : MonoBehaviour {
 	public GameController gameController;
 
+	public int bulletCount;
 
 	public float moveSpeed;
 	public float jumpHeight;
@@ -21,11 +22,9 @@ public class Player : MonoBehaviour {
 	//private int doubleJumped2;
 	#endregion
 
-	public Transform playerShootPositionRight;
-	public Transform playerShootPositionLeft;
+	public Transform playerShootPosition;
 
-	public GameObject bulletRight;
-	public GameObject bulletLeft;
+	public GameObject mcBullet;
 
 	private Animator anim;
 
@@ -108,15 +107,12 @@ public class Player : MonoBehaviour {
 		GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x , jumpHeight);
 	}
 
-	public void shootRight()
+	public void shoot()
 	{
-		Instantiate(bulletRight, playerShootPositionRight.position, playerShootPositionRight.rotation);
+		Instantiate(mcBullet, playerShootPosition.position, playerShootPosition.rotation);
+		bulletCount++;
 	}
-
-	public void shootLeft()
-	{
-		Instantiate(bulletLeft, playerShootPositionLeft.position, playerShootPositionLeft.rotation);
-	}
+		
 
 	#endregion
 
@@ -146,9 +142,9 @@ public class Player : MonoBehaviour {
 			doubleJumped -= 1;
 		}
 
-		if(Input.GetButtonDown("Fire1"))
+		if(Input.GetButtonDown("Fire1") && bulletCount < 3)
 		{
-			shootRight();
+			shoot();
 			gameController.player1AmmoDown();
 		}
 
